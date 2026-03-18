@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Header from './components/Header'
+import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
 
 function App() {
@@ -35,7 +36,8 @@ function App() {
 
     return (
         <div className="container">
-            <Header todos={todos} addTodo={addTodo} />
+            <Header todos={todos} />
+            <TodoInput todos={todos} addTodo={addTodo} />
             <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
         </div>
     )
