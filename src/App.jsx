@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function App() {
     const [todos, setTodos] = useState([
@@ -6,7 +6,7 @@ function App() {
         { id: 2, text: '운동하기', checked: false },
     ])
 
-    const [todoId, setTodoId] = useState(3)
+    const lastId = useRef(3)
 
     const [input, setInput] = useState('')
 
@@ -15,8 +15,8 @@ function App() {
             alert('할 일을 입력해주세요')
             return
         }
-        setTodos([{ id: todoId, text: input, checked: false }, ...todos])
-        setTodoId(todoId + 1)
+        setTodos([{ id: lastId.current, text: input, checked: false }, ...todos])
+        lastId.current++
         setInput('')
     }
 
