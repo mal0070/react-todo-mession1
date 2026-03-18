@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Header from './components/Header'
+import TodoList from './components/TodoList'
 
 function App() {
     const [todos, setTodos] = useState([
@@ -35,17 +36,7 @@ function App() {
     return (
         <div className="container">
             <Header todos={todos} addTodo={addTodo} />
-            <ul className="todo-list" type="none">
-                {todos.map((todo) => (
-                    <li key={todo.id}>
-                        <label>
-                            <input type="checkbox" onChange={() => toggleTodo(todo.id)} />
-                            {todo.text}
-                        </label>
-                        <button onClick={() => removeTodo(todo.id)}>X</button>
-                    </li>
-                ))}
-            </ul>
+            <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
         </div>
     )
 }
