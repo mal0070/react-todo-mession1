@@ -1,7 +1,13 @@
 import { useState } from 'react'
 
 function App() {
-    const [todos, setTodos] = useState(['공부하기', '운동하기'])
+    const [todos, setTodos] = useState([
+        { id: 1, text: '공부하기', checked: false },
+        { id: 2, text: '운동하기', checked: false },
+    ])
+
+    const [todoId, setTodoId] = useState(3)
+
     const [input, setInput] = useState('')
 
     const addTodo = () => {
@@ -9,13 +15,15 @@ function App() {
             alert('할 일을 입력해주세요')
             return
         }
-        setTodos([...todos, input])
+        setTodos([{ id: todoId, text: input, checked: false }, ...todos])
+        setTodoId(todoId + 1)
         setInput('')
     }
 
-    const removeTodo = (selectedIndex) => {
-        setTodos(todos.filter((todo, index) => index != selectedIndex))
+    const removeTodo = (selectedId) => {
+        setTodos(todos.filter((todo) => todo.id != selectedId))
     }
+
     return (
         <div className="container">
             <header>
@@ -34,13 +42,13 @@ function App() {
                 <button onClick={addTodo}>+</button>
             </div>
             <ul className="todo-list">
-                {todos.map((todo, index) => (
-                    <li key={index}>
+                {todos.map((todo) => (
+                    <li key={todo.id}>
                         <label>
                             <input type="checkbox" />
-                            {todo}
+                            {todo.text}
                         </label>
-                        <button onClick={() => removeTodo(index)}>X</button>
+                        <button onClick={() => removeTodo(todo.id)}>X</button>
                     </li>
                 ))}
             </ul>
