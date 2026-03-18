@@ -12,12 +12,16 @@ function App() {
         setTodos([...todos, input])
         setInput('')
     }
+
+    const removeTodo = (selectedIndex) => {
+        setTodos(todos.filter((todo, index) => index != selectedIndex))
+    }
     return (
         <div className="container">
             <header>
                 <p>2026년 3월 18일</p>
                 <h1>To-Do List</h1>
-                <p>0 / 0 완료</p>
+                <p> 0 / {todos.length} 완료</p>
             </header>
             <div className="input-row">
                 <input
@@ -29,13 +33,14 @@ function App() {
                 />
                 <button onClick={addTodo}>+</button>
             </div>
-            <ul className="task-list">
+            <ul className="todo-list">
                 {todos.map((todo, index) => (
                     <li key={index}>
                         <label>
                             <input type="checkbox" />
                             {todo}
                         </label>
+                        <button onClick={() => removeTodo(index)}>X</button>
                     </li>
                 ))}
             </ul>
