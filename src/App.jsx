@@ -1,4 +1,17 @@
+import { useState } from 'react'
+
 function App() {
+    const [todos, setTodos] = useState(['공부하기', '운동하기'])
+    const [input, setInput] = useState('')
+
+    const addTodo = () => {
+        if (!input) {
+            alert('할 일을 입력해주세요')
+            return
+        }
+        setTodos([...todos, input])
+        setInput('')
+    }
     return (
         <div className="container">
             <header>
@@ -7,17 +20,24 @@ function App() {
                 <p>0 / 0 완료</p>
             </header>
             <div className="input-row">
-                <input type="text" placeholder="새 할 일을 입력하세요" autocomplete="off" />
-                <button>+</button>
+                <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="새 할 일을 입력하세요"
+                    autoComplete="off"
+                />
+                <button onClick={addTodo}>+</button>
             </div>
             <ul className="task-list">
-                <li>
-                    <label>
-                        {/* label을 클릭해도 check 할 수 있도록 input과 연결*/}
-                        <input type="checkbox" />
-                        청소하기
-                    </label>
-                </li>
+                {todos.map((todo, index) => (
+                    <li key={index}>
+                        <label>
+                            <input type="checkbox" />
+                            {todo}
+                        </label>
+                    </li>
+                ))}
             </ul>
         </div>
     )
