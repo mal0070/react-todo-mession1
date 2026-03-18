@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
     const [todos, setTodos] = useState([
@@ -24,6 +24,16 @@ function App() {
         setTodos(todos.filter((todo) => todo.id != selectedId))
     }
 
+    const toggleTodo = (selectedId) => {
+        const updatedTodo = todos.map((todo) => (todo.id === selectedId ? { ...todo, checked: !todo.checked } : todo))
+        setTodos(updatedTodo)
+    }
+
+    //todos가 바뀔때마다 출력
+    useEffect(() => {
+        console.log(todos)
+    }, [todos])
+
     return (
         <div className="container">
             <header>
@@ -41,11 +51,11 @@ function App() {
                 />
                 <button onClick={addTodo}>+</button>
             </div>
-            <ul className="todo-list">
+            <ul className="todo-list" type="none">
                 {todos.map((todo) => (
                     <li key={todo.id}>
                         <label>
-                            <input type="checkbox" />
+                            <input type="checkbox" onChange={() => toggleTodo(todo.id)} />
                             {todo.text}
                         </label>
                         <button onClick={() => removeTodo(todo.id)}>X</button>
