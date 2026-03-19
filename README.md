@@ -7,6 +7,7 @@
 이 프로젝트는 `react-router-dom`을 사용한 메인 페이지와 Todo 상세 페이지가 있는 Todo 관리 애플리케이션입니다. 상태는 Context API로 관리하며, Todo 추가, 완료 토글, 삭제, 상세 보기 기능을 제공합니다.
 
 ## 📁 주요 구조
+₩₩₩
 src/
 ├── main.jsx                 // 앱 엔트리
 ├── App.jsx                  // 라우터 / 기본 레이아웃
@@ -22,6 +23,7 @@ src/
 │   └── TodoItem.jsx
 └── utils/
     └── getDateLabel.js      // 날짜 라벨 포맷팅
+₩₩₩
 
 ## ✅ 기능
 
