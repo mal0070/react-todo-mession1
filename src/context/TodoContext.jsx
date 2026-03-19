@@ -1,24 +1,21 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const TodoContext = createContext()
 
 export function TodoProvider({ children }) {
     const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos') || '[]'))
 
-    const id = useRef(1)
-
     useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos), [todos])
-    })
+        localStorage.setItem('todos', JSON.stringify(todos))
+    }, [todos])
 
     const addTodo = (text) => {
         if (!text) {
             alert('할 일을 입력해주세요')
             return
         }
-        setTodos([{ id: id.current, text, checked: false }, ...todos])
-        id.current++
+        setTodos([{ id: Date.now(), text, checked: false }, ...todos])
     }
 
     const removeTodo = (selectedId) => {
