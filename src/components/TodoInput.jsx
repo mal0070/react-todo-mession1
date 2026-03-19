@@ -12,15 +12,21 @@ function Header() {
     }
 
     return (
-        <div className="input-row">
+        <div className="flex gap-2 mr-8 mb-8 px-2 h-10 w-full">
             <input
+                className="flex-1 border rounded-md p-2"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="새 할 일을 입력하세요"
                 autoComplete="off"
             />
-            <button onClick={handleAdd}>+</button>
+            <button
+                className={`rounded-md w-10 transition-colors ${input ? 'bg-black text-white' : 'bg-gray-300 text-black'}`}
+                onClick={handleAdd}
+            >
+                +
+            </button>
         </div>
     )
 }
