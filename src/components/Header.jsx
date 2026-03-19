@@ -1,10 +1,11 @@
 import { useTodos } from '../context/TodoContext'
+import { getDateLabel } from '../utils/getDateLabel'
 
 function Header() {
     const { todos } = useTodos()
     return (
         <header className="w-full h-56">
-            <p className="text-sm mb-2">2026년 3월 18일</p>
+            <p className="text-sm mb-2 text-indigo-800">{getDateLabel()}</p>
             <h1 className="text-6xl text-purple-800 mb-4 font-semibold">
                 To-Do <p className="text-stone-800">List</p>
             </h1>

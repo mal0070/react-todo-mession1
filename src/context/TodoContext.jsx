@@ -15,7 +15,7 @@ export function TodoProvider({ children }) {
             alert('할 일을 입력해주세요')
             return
         }
-        setTodos([{ id: Date.now(), text, checked: false }, ...todos])
+        setTodos([{ id: Date.now(), text, checked: false, content: '' }, ...todos])
     }
 
     const removeTodo = (selectedId) => {
@@ -27,7 +27,15 @@ export function TodoProvider({ children }) {
         setTodos(updatedTodo)
     }
 
-    return <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleTodo }}>{children}</TodoContext.Provider>
+    const updateContent = (selectedId, content) => {
+        setTodos(todos.map((todo) => (todo.id === selectedId ? { ...todo, content } : todo)))
+    }
+
+    return (
+        <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleTodo, updateContent }}>
+            {children}
+        </TodoContext.Provider>
+    )
 }
 
 export function useTodos() {
