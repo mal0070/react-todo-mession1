@@ -6,7 +6,6 @@ function Header() {
     const [input, setInput] = useState('')
 
     const handleAdd = () => {
-        //input값을 App으로 올려보냄
         addTodo(input)
         setInput('') //저장 후 입력값 초기화
     }
@@ -18,6 +17,7 @@ function Header() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
                 placeholder="새 할 일을 입력하세요"
                 autoComplete="off"
             />

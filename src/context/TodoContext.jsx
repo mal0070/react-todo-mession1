@@ -6,7 +6,7 @@ const TodoContext = createContext()
 export function TodoProvider({ children }) {
     const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos') || '[]'))
 
-    const id = useRef(0)
+    const id = useRef(1)
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos), [todos])
@@ -17,7 +17,7 @@ export function TodoProvider({ children }) {
             alert('할 일을 입력해주세요')
             return
         }
-        setTodos([{ id: id, text, checked: false }, ...todos])
+        setTodos([{ id: id.current, text, checked: false }, ...todos])
         id.current++
     }
 
