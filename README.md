@@ -8,13 +8,13 @@
 
 ## 📁 주요 구조
 
-- `src/main.jsx` - 앱 엔트리
-- `src/App.jsx` - 라우터/기본 레이아웃
-- `src/pages/Main.jsx` - Todo 목록 및 입력
-- `src/pages/TodoDetail.jsx` - 선택한 Todo 상세
-- `src/context/TodoContext.jsx` - Todo 상태/함수 공유
-- `src/components/` - 헤더, 입력, 목록, 항목 UI 컴포넌트
-- `src/utils/getDateLabel.js` - 날짜 라벨 포맷팅
+`src/main.jsx` - 앱 엔트리
+`src/App.jsx` - 라우터/기본 레이아웃
+`src/pages/Main.jsx` - Todo 목록 및 입력
+`src/pages/TodoDetail.jsx` - 선택한 Todo 상세
+`src/context/TodoContext.jsx` - Todo 상태/함수 공유
+`src/components/` - 헤더, 입력, 목록, 항목 UI 컴포넌트
+`src/utils/getDateLabel.js` - 날짜 라벨 포맷팅
 
 ## ✅ 기능
 
