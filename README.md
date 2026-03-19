@@ -1,4 +1,4 @@
-# React Todo 앱 (Mession 1)
+# React Todo 앱
 
 간단한 React + Vite + Tailwind 기반 Todo 앱입니다.
 
