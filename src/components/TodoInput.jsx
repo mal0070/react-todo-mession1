@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useTodos } from '../context/TodoContext'
 
-function Header({ addTodo }) {
+function Header() {
+    const { addTodo } = useTodos()
     const [input, setInput] = useState('')
 
     const handleAdd = () => {

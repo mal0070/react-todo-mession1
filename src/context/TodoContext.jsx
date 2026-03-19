@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useRef, useState } from 'react'
 
-export function useTodos() {
+const TodoContext = createContext()
+
+export function TodoProvider({ children }) {
     const [todos, setTodos] = useState([
         { id: 1, text: '공부하기', checked: false },
         { id: 2, text: '운동하기', checked: false },
@@ -26,9 +29,9 @@ export function useTodos() {
         setTodos(updatedTodo)
     }
 
-    //todos가 바뀔때마다 출력
-    useEffect(() => {
-        console.log(todos)
-    }, [todos])
-    return { todos, addTodo, removeTodo, toggleTodo }
+    return <TodoContext.Provider value={{ todos, addTodo, removeTodo, toggleTodo }}>{children}</TodoContext.Provider>
+}
+
+export function useTodos() {
+    return useContext(TodoContext)
 }

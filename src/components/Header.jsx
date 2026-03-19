@@ -1,4 +1,7 @@
-function Header({ todos }) {
+import { useTodos } from '../context/TodoContext'
+
+function Header() {
+    const { todos } = useTodos()
     return (
         <header>
             <p>2026년 3월 18일</p>

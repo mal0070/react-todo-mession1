@@ -1,4 +1,7 @@
-function TodoItem({ todo, toggleTodo, removeTodo }) {
+import { useTodos } from '../context/TodoContext'
+
+function TodoItem({ todo }) {
+    const { toggleTodo, removeTodo } = useTodos()
     return (
         <li key={todo.id}>
             <label>
